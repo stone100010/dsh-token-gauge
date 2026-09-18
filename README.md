@@ -30,7 +30,7 @@ Every figure comes from session projections the Web client already receives (`to
 dsh plugin --profile web add @stone100010/dsh-token-gauge
 ```
 
-If pnpm is unavailable, or `dsh` itself is not on your PATH — common when DSH is launched through `npx`, whose bin directory never reaches an interactive shell — use the bundled helper, which locates `dsh` itself and performs the same link-and-register work by hand:
+If pnpm is unavailable, or `dsh` itself is not on your PATH — common when DSH is launched through `npx`, whose bin directory never reaches an interactive shell — use the bundled helpers, which locate `dsh` themselves and perform the same link-and-register work by hand:
 
 ```sh
 git clone https://github.com/stone100010/dsh-token-gauge.git
@@ -40,7 +40,9 @@ cd dsh-token-gauge
 ./restart-and-verify.sh # restart dsh web, capture the startup token, confirm it loaded
 ```
 
-Then open the tokenized URL the server prints and **hard refresh** (`Ctrl+Shift+R`) once: client bundles load at page load.
+Installed from npm instead? `setup.sh` ships in the tarball, but run it from a clone if you also want `restart-and-verify.sh` — npm installs only the runtime files.
+
+Either way, open the tokenized URL the server prints and **hard refresh** (`Ctrl+Shift+R`) once: client bundles load at page load.
 
 The panel appears in the bottom-right. Drag its header to move it, drag the bottom-right corner to resize, and use the header control to collapse it. Position, size, and collapsed state persist per browser.
 
