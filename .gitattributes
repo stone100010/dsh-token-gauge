@@ -1,0 +1,7 @@
+# Shell scripts must keep LF endings: a CRLF checkout makes them unrunnable on
+# Linux/macOS with a confusing "bad interpreter" error.
+*.sh text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
