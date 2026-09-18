@@ -1,0 +1,22 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # No dependencies to install: the plugin has none, and the harness runs
+      # the real bundle against in-process stand-ins.
+      - name: Run the regression harness
+        run: node test/harness.mjs
+      - name: Check every shell script parses
+        run: |
+          for script in *.sh; do bash -n "$script"; done

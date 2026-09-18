@@ -1,0 +1,60 @@
+{
+  "name": "@stone100010/dsh-token-gauge",
+  "version": "0.1.0",
+  "description": "Draggable real-time token & context dashboard for the DSH Web GUI, mounted on the frame-wide shell.overlay seat",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "setup.sh",
+    "restart-and-verify.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "client": {
+      "platform": "web"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stone100010/dsh-token-gauge.git",
+    "directory": "."
+  },
+  "homepage": "https://github.com/stone100010/dsh-token-gauge#readme",
+  "bugs": {
+    "url": "https://github.com/stone100010/dsh-token-gauge/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "tokens",
+    "dashboard",
+    "gauge",
+    "web-ui",
+    "cordis"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "stone100010"
+}

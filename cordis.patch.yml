@@ -1,0 +1,12 @@
+# dsh-token-dashboard profile layer.
+#
+# The host half is an inert loader row: its only job is to exist as an enabled
+# Loader entry so `@deepseek-ai/dsh-client-modules` scans this package's
+# `dsh.client` declaration and serves `lib/client.js` to the browser under
+# `/plugins`. The dashboard itself runs entirely in the page.
+#
+# Nothing here touches the agent, the model, or session events.
+
+- insert:
+    - id: token-dashboard
+      name: '@stone100010/dsh-token-gauge'
