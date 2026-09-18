@@ -44,6 +44,7 @@ DSH_BIN="$(find_dsh || true)"
 # Rewrite the profile manifest: add or remove the dependency and the bundle row.
 # Idempotent, and it never touches any other entry.
 edit_manifest() {
+  local mode="$1"
   node -e '
     const fs = require("fs");
     const [file, name, link, mode] = process.argv.slice(1);
@@ -65,7 +66,10 @@ edit_manifest() {
 
 case "${1:-}" in
   install)
-    mkdir -p "$PROFILE/node_modules"
+    # A scoped name needs its scope directory: node_modules/@scope/name, not
+    # just node_modules/name. Missing this is the first failure a scoped plugin
+    # hits, so create the full parent path.
+    mkdir -p "$PROFILE/node_modules/$(dirname "$PKG_NAME")"
     ln -sfn "$HERE" "$PROFILE/node_modules/$PKG_NAME"
     edit_manifest add
     info "linked   : $PROFILE/node_modules/$PKG_NAME -> $HERE"
